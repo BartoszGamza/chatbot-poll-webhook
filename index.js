@@ -4,8 +4,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express().use(bodyParser.json()); // creates http server
 const token = process.env.TOKEN; // type here your verification token
-
-app.listen(3000, () => console.log("[ChatBot] Webhook is listening"));
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log("[ChatBot] Webhook is listening"));
 app.get("/", (req, res) => {
   if (req.query.token !== token) {
     return res.sendStatus(401);
